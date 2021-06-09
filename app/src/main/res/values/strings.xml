@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BooksApp</string>
+    <string name="image_description">Image</string>
+    <string name="text_subtitle">Sample of subtitle text</string>
+
+    <string name="menu_favorite">Favorite</string>
+
+    <string name="something_wrong">Oops.. something went wrong</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+
+    <string name="publishdate">Publish Date : %s</string>
+    <string name="fsentence">FirstSentence of the Book : %s</string>
+    <string name="website">Click Here for more Detail</string>
+</resources>
