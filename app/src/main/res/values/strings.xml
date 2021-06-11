@@ -12,4 +12,7 @@
     <string name="publishdate">Publish Date : %s</string>
     <string name="fsentence">FirstSentence of the Book : %s</string>
     <string name="website">Click Here for more Detail</string>
+
+    <string name="power_connected">Power connected!</string>
+    <string name="power_disconnected">Power disconnected!</string>
 </resources>

@@ -5,7 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,9 +14,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dicoding.booksapp.R
 import com.dicoding.booksapp.databinding.ActivityHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var activityHomeBinding : ActivityHomeBinding
+    private lateinit var activityHomeBinding: ActivityHomeBinding
     private lateinit var broadcastReceiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,15 +39,29 @@ class HomeActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        registerBroadCastReceiver()
+    }
+
     private fun registerBroadCastReceiver() {
-        broadcastReceiver = object : BroadcastReceiver() {
+        broadcastReceiver = object : BroadcastReceiver(){
             override fun onReceive(context: Context, intent: Intent) {
                 when (intent.action) {
                     Intent.ACTION_POWER_CONNECTED -> {
-                        tv_power_status.text = getString(R.string.power_connected)
+                        Toast.makeText(
+                            context,
+                            R.string.power_connected,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     Intent.ACTION_POWER_DISCONNECTED -> {
-                        tv_power_status.text = getString(R.string.power_disconnected)
+                        Toast.makeText(
+                            context,
+                            R.string.power_disconnected,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -57,8 +74,8 @@ class HomeActivity : AppCompatActivity() {
         registerReceiver(broadcastReceiver, intentFilter)
     }
 
-    override fun onStart() {
-        super.onStart()
-        registerBroadCastReceiver()
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(broadcastReceiver)
     }
 }
