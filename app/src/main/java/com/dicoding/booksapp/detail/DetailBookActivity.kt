@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bangkit.core.data.Resource
@@ -13,8 +14,8 @@ import com.bangkit.core.domain.model.Book
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.booksapp.R
 import com.dicoding.booksapp.databinding.ActivityDetailBookBinding
-import com.dicoding.booksapp.utils.util.addChip
-import com.dicoding.booksapp.utils.util.setVisible
+import com.dicoding.booksapp.utils.Util.addChip
+import com.dicoding.booksapp.utils.Util.setVisible
 import com.squareup.picasso.Picasso
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -52,7 +53,7 @@ class DetailBookActivity : AppCompatActivity() {
         val detailBookID = detailBook?.bookId
         if (detailBookID != null) {
             detailBookViewModel.setSelectedDetailBook(detailBookID)
-            detailBookViewModel.detailbook.observe(this, {
+            detailBookViewModel.detailbook.observe(this, { it ->
                 when (it) {
                     is Resource.Loading -> showLoading(true)
                     is Resource.Success -> {
@@ -112,6 +113,9 @@ class DetailBookActivity : AppCompatActivity() {
                             Log.d("test", detail.toString())
 
                         }
+                    }
+                    is Resource.Error -> {
+                        Toast.makeText(this@DetailBookActivity, "Error", Toast.LENGTH_SHORT).show()
                     }
                 }
             })

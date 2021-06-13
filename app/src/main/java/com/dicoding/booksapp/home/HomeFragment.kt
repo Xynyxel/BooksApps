@@ -12,7 +12,7 @@ import com.bangkit.core.ui.BooksAdapter
 import com.dicoding.booksapp.R
 import com.dicoding.booksapp.databinding.FragmentHomeBinding
 import com.dicoding.booksapp.detail.DetailBookActivity
-import com.dicoding.booksapp.utils.util.setVisible
+import com.dicoding.booksapp.utils.Util.setVisible
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {

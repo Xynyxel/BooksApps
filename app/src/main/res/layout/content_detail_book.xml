@@ -53,7 +53,7 @@
             android:layout_marginTop="15dp"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="Subject : "
+            android:text="@string/subject_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_first_sentence"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -82,8 +82,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.core.widget.NestedScrollView>

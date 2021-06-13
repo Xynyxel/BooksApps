@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -46,22 +44,24 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun registerBroadCastReceiver() {
-        broadcastReceiver = object : BroadcastReceiver(){
+        broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
                 when (intent.action) {
                     Intent.ACTION_POWER_CONNECTED -> {
-                        Toast.makeText(
-                            context,
-                            R.string.power_connected,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        val snackbar: Snackbar = Snackbar
+                            .make(
+                                activityHomeBinding.navView, R.string.power_connected,
+                                Snackbar.LENGTH_LONG
+                            )
+                        snackbar.show()
                     }
                     Intent.ACTION_POWER_DISCONNECTED -> {
-                        Toast.makeText(
-                            context,
-                            R.string.power_disconnected,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        val snackbar: Snackbar = Snackbar
+                            .make(
+                                activityHomeBinding.navView, R.string.power_disconnected,
+                                Snackbar.LENGTH_LONG
+                            )
+                        snackbar.show()
                     }
                 }
             }

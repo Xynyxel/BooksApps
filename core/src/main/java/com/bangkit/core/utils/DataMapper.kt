@@ -40,8 +40,7 @@ object DataMapper {
     )
 
     fun detailBookResponsesToDetailEntities(input: DetailBookResponse): DetailBookEntity {
-        var first_sentence = ""
-        val detailBookEntity = DetailBookEntity(
+        return DetailBookEntity(
             bookdetailId = input.key.toString(),
             title = input.title.toString(),
             first_sentence = input.firstSentence?.value.toString(),
@@ -49,7 +48,6 @@ object DataMapper {
             subjects = input.subjects?.joinToString().toString(),
             firstPublishDate = input.firstPublishDate.toString()
         )
-        return detailBookEntity
     }
 
     fun detailBookEntitiesToDomainDetailBook(input: DetailBookEntity): DetailBook =
@@ -62,14 +60,14 @@ object DataMapper {
             first_publish_date = input.firstPublishDate
         )
 
-    fun DomainToDetailBookEntity(input: DetailBook) = DetailBookEntity(
+    /*fun DomainToDetailBookEntity(input: DetailBook) = DetailBookEntity(
         bookdetailId = input.bookdetailId,
         title = input.title,
         cover = input.cover,
         first_sentence = input.first_sentence,
         subjects = input.subjects,
         firstPublishDate = input.first_publish_date.toString()
-    )
+    )*/
 
 
 }

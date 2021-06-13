@@ -7,15 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource(private val bookDao: BookDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(bookDao: BookDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(bookDao)
-            }
-    }
-
     fun getAllBook(): Flow<List<BookEntity>> = bookDao.getAllBook()
 
     fun getFavoriteBook(): Flow<List<BookEntity>> = bookDao.getFavoriteBook()

@@ -15,4 +15,5 @@
 
     <string name="power_connected">Power connected!</string>
     <string name="power_disconnected">Power disconnected!</string>
+    <string name="subject_title">Subject :</string>
 </resources>

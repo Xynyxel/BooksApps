@@ -9,7 +9,7 @@ import com.bangkit.core.domain.usecase.BookUseCase
 
 class DetailBookViewModel(private val bookUseCase: BookUseCase) : ViewModel() {
 
-    var detailId = MutableLiveData<String>()
+    private var detailId = MutableLiveData<String>()
 
     fun setFavoriteBook(book: Book, newStatus: Boolean) =
         bookUseCase.setFavoriteBook(book, newStatus)
